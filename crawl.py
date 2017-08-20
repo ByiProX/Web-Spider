@@ -18,7 +18,11 @@ class Crawler(object):
     @staticmethod
     def request(url, **kwargs):
         response = requests.get(url, **kwargs)
-        return response
+        try:
+            response.raise_for_status()
+            return response
+        except Exception as exc:
+            print('there was a problem: %s' %(exc))
 
     def parse_menu(self, response):
         pass
