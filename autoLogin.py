@@ -27,7 +27,7 @@ if mail == 'qq':
         browser.find_element_by_id('u').clear()
         browser.find_element_by_id('u').send_keys('wangkx0105@qq.com')
         browser.find_element_by_id('p').clear()
-        browser.find_element_by_id('p').send_keys('WKX299792458QQ')
+        browser.find_element_by_id('p').send_keys('*********')
         sleep(2)
         browser.find_element_by_id('login_button').click()
         # browser.find_element_by_id('login_button').submit()报错！！！
