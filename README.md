@@ -1,5 +1,6 @@
 # antoMailLogin
 auto login of 163 qq .etc
+>* [Selenium with Python](http://selenium-python.readthedocs.io/)
 
 >* [selenium之定位以及切换frame（iframe)](http://blog.csdn.net/huilan_same/article/details/52200586)
 
