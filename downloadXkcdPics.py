@@ -16,7 +16,7 @@ while not url.endswith('#'):
     # Find the URL of the comic image.
     comicElem = soup.select('#comic img')
     # Add image number for files
-    imgNum = soup.find_all(text=re.compile('(https://xkcd.com/)(\d{1,})'))[0][48:-1]
+    imgNum = soup.find_all(text=re.compile('(https://xkcd.com/)(\d+)'))[0][48:-1]
     if comicElem == []:
         print('Could not find comic image.')
     else:
@@ -29,7 +29,7 @@ while not url.endswith('#'):
         # Save the image to ./xkcd
         with open(os.path.join('xkcd', imgNum + os.path.basename(comicUrl)), 'wb') as imageFile:
             for chunk in res.iter_content(100000):
-                imageFile.write(chunk) #save memory
+                imageFile.write(chunk)  # Save memory
             # imageFile.write(res.content)
 
     # Get the Prev button's url.
