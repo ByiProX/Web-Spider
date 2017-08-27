@@ -1,5 +1,6 @@
 # MailAutoLogin
 
+import getpass
 from selenium import webdriver
 from time import sleep
 
@@ -26,8 +27,11 @@ if mail == 'qq':
 
         browser.find_element_by_id('u').clear()
         browser.find_element_by_id('u').send_keys('wangkx0105@qq.com')
+        passWord = getpass.getpass('Please input your mail password:')
+        # 必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！
+        print('必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！')
         browser.find_element_by_id('p').clear()
-        browser.find_element_by_id('p').send_keys('*********')
+        browser.find_element_by_id('p').send_keys('%s' % passWord)
         sleep(2)
         browser.find_element_by_id('login_button').click()
         # browser.find_element_by_id('login_button').submit()报错！！！
@@ -89,12 +93,12 @@ else:
         browser.switch_to.frame('x-URS-iframe')
         browser.find_element_by_name('email').clear()
         browser.find_element_by_name('password').clear()
+        passWord = getpass.getpass('Please input your mail password:')
+        # 必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！
+        print('必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！')
 
-        browser.find_element_by_name('email').send_keys('prettybug125')
-        browser.find_element_by_name('password').send_keys('a19841984*')
-
-        # browser.find_element_by_name('email').send_keys('wangkx0105')
-        # browser.find_element_by_name('password').send_keys('******')
+        browser.find_element_by_name('email').send_keys('wangkx0105')
+        browser.find_element_by_name('password').send_keys('%s' % passWord)
 
         browser.find_element_by_css_selector('#dologin').click()  # 登录
         print('log in ...')
