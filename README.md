@@ -6,6 +6,8 @@ auto login of 163 qq .etc
 
 >* [Selenium Webdriver元素定位的八种常用方式](http://www.cnblogs.com/qingchunjun/p/4208159.html)
 
+>* [Python selenium **三种等待方式**详解](http://www.jb51.net/article/92672.htm)
+
 >* [Selenium实现自动登录163邮箱和Locating Elements介绍](http://www.cnblogs.com/eastmount/p/5055927.html)
 
 >* [Selenium高级篇之窗口移动、弹出对话框自登录](http://blog.csdn.net/eastmount/article/details/77074306)
