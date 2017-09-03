@@ -7,6 +7,7 @@ import re
 '''
 #################################################
 # 使用selenium和phantomjs下载火影忍者漫画
+# 尝试使用面向对象编程
 #################################################
 '''
 
@@ -47,7 +48,7 @@ class DownloadPics(object):
 
     def find_total_page_num(self, browser):
         page_element = browser.find_element_by_css_selector("table[cellspacing='1']")
-        num = re.search(r'共\d+页', page_element.text).group()[1:-1]
+        num = re.search(r'共\d+页', page_element.text).group()[1:-1]  # python3不用考虑编码问题？
         return int(num)
 
     def create_dir(self, dir_name):
