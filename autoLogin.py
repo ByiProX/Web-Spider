@@ -1,9 +1,11 @@
 # MailAutoLogin
 
 import getpass
+import hashlib
 from selenium import webdriver
 from time import sleep
 
+print('必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！')
 
 while True:
     print("Choose the mail you want to log in, type 'qq' or '163'")
@@ -17,7 +19,18 @@ browser = webdriver.Chrome()
 # browser.maximize_window()  # 可有可无
 
 
+def get_md5(password):
+    md5 = hashlib.md5()
+    md5.update((password + 'the_salt' + mail).encode('utf-8'))
+    return md5.hexdigest()
+
+
+passWordDB = {'qqPassWord': '9880ffc30b44a90f49a27517101f7c57',
+              '163PassWord': '08f4df2fa8c181f8e779c0801d91bcc8'
+              }
+
 if mail == 'qq':
+
     try:
         browser.get('http://mail.qq.com/')
 
@@ -28,58 +41,61 @@ if mail == 'qq':
         browser.find_element_by_id('u').clear()
         browser.find_element_by_id('u').send_keys('wangkx0105@qq.com')
         passWord = getpass.getpass('Please input your mail password:')
-        # 必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！
-        print('必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！')
-        browser.find_element_by_id('p').clear()
-        browser.find_element_by_id('p').send_keys('%s' % passWord)
-        sleep(2)
-        browser.find_element_by_id('login_button').click()
-        # browser.find_element_by_id('login_button').submit()报错！！！
+        print(get_md5(passWord))
+        if get_md5(passWord) == passWordDB['qqPassWord']:
 
-        print('log in ...')
-        print('--------------')
+            browser.find_element_by_id('p').clear()
+            browser.find_element_by_id('p').send_keys('%s' % passWord)
+            sleep(2)
+            browser.find_element_by_id('login_button').click()
+            # browser.find_element_by_id('login_button').submit()报错！！！
 
-        sleep(2)
-        # browser.find_element_by_css_selector('#composebtn').click()
-        browser.find_element_by_id('composebtn').click()
-        # 以上两种访问方式都可以
-        sleep(2)
+            print('log in ...')
+            print('--------------')
 
-        browser.switch_to.frame('mainFrame')
-        # browser.refresh()
-        '''
-        # browser.find_element_by_css_selector("input[class='js_input']").\
-        #     send_keys('wangkx0105@outlook.com')
-        # browser.find_element_by_css_selector("#addr_text>input[class='js_input']").\
-        #     send_keys('wangkx0105@outlook.com')
-        这些方法不行，shit！！！！！
-        '''
-        browser.find_element_by_id('toAreaCtrl').find_element_by_class_name('js_input').\
-            send_keys('wangkx0105@outlook.com')  # 收件人 肯定有更简单的方法
-        browser.find_element_by_id('subject').send_keys('test')  # 主题
+            sleep(2)
+            # browser.find_element_by_css_selector('#composebtn').click()
+            browser.find_element_by_id('composebtn').click()
+            # 以上两种访问方式都可以
+            sleep(2)
 
-        browser.switch_to.frame(browser.find_element_by_class_name('qmEditorIfrmEditArea'))  # switch frame
+            browser.switch_to.frame('mainFrame')
+            # browser.refresh()
+            '''
+            # browser.find_element_by_css_selector("input[class='js_input']").\
+            #     send_keys('wangkx0105@outlook.com')
+            # browser.find_element_by_css_selector("#addr_text>input[class='js_input']").\
+            #     send_keys('wangkx0105@outlook.com')
+            这些方法不行，shit！！！！！
+            '''
+            browser.find_element_by_id('toAreaCtrl').find_element_by_class_name('js_input').\
+                send_keys('wangkx0105@outlook.com')  # 收件人 肯定有更简单的方法
+            browser.find_element_by_id('subject').send_keys('test')  # 主题
 
-        browser.find_element_by_css_selector("body[contenteditable='true']").send_keys('secret test!')  #邮件正文
+            browser.switch_to.frame(browser.find_element_by_class_name('qmEditorIfrmEditArea'))  # switch frame
 
-        browser.switch_to.parent_frame()
-        # browser.switch_to.default_content()  # failed
-        '''
-        注意切换frame,在使用switch时注意方法的选择
-        driver.switch_to.frame(reference)
-        driver.switch_to.parent_frame()
-        driver.switch_to.default_content()
-        注意灵活运用
-        
-        学习网站：
-        http://blog.csdn.net/huilan_same/article/details/52200586
-        http://www.cnblogs.com/qingchunjun/p/4208159.html
-        '''
+            browser.find_element_by_css_selector("body[contenteditable='true']").send_keys('secret test!')  #邮件正文
 
-        sleep(2)
+            browser.switch_to.parent_frame()
+            # browser.switch_to.default_content()  # failed
+            '''
+            注意切换frame,在使用switch时注意方法的选择
+            driver.switch_to.frame(reference)
+            driver.switch_to.parent_frame()
+            driver.switch_to.default_content()
+            注意灵活运用
+            
+            学习网站：
+            http://blog.csdn.net/huilan_same/article/details/52200586
+            http://www.cnblogs.com/qingchunjun/p/4208159.html
+            '''
 
-        browser.find_element_by_xpath("//*[@id='toolbar'][@class='clear']/div/a[1]").click()
-        # xpath的使用方法
+            sleep(2)
+
+            browser.find_element_by_xpath("//*[@id='toolbar'][@class='clear']/div/a[1]").click()
+            # xpath的使用方法
+        else:
+            print('wrong password !!!')
 
 
     except ValueError:
@@ -94,8 +110,6 @@ else:
         browser.find_element_by_name('email').clear()
         browser.find_element_by_name('password').clear()
         passWord = getpass.getpass('Please input your mail password:')
-        # 必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！
-        print('必须在电脑的terminal下运行软件，pycharm下运行该程序报错！！！')
 
         browser.find_element_by_name('email').send_keys('wangkx0105')
         browser.find_element_by_name('password').send_keys('%s' % passWord)
