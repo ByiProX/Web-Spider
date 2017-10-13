@@ -16,7 +16,7 @@ while not url.endswith('#'):
     # Find the URL of the comic image.
     comicElem = soup.select('#comic img')
     # Add image number for files
-    imgNum = soup.find_all(text=re.compile('(https://xkcd.com/)(\d+)'))[0][48:-1]
+    imgNum = soup.find_all(text=re.compile(r'(https://xkcd.com/)(\d+)'))[0][48:-1]
     if comicElem == []:
         print('Could not find comic image.')
     else:
