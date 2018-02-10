@@ -1,4 +1,7 @@
 ## 从零开始搞爬虫
+### 本节关键字 ###
+*urllib | chardet*
+
 
 在Python3.x中，我们可以使用urlib这个组件抓取网页，urllib是一个URL处理包，这个包中集合了一些处理URL的模块，如下：
 
