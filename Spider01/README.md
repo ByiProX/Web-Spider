@@ -23,7 +23,7 @@ urlopen有一些可选参数，具体信息可以查阅Python自带的documentat
 from urllib import request
 
 if __name__ == "__main__":
-    response = request.urlopen("http://www.example.com")
+    response = request.urlopen("http://fanyi.baidu.com")
     html = response.read()
     print(html)
 ```
@@ -59,7 +59,7 @@ from urllib import request
 import chardet
 
 if __name__ == "__main__":
-    response = request.urlopen("http://www.example.com/")
+    response = request.urlopen("http://fanyi.baidu.com")
     html = response.read()
     charset = chardet.detect(html)
     print(charset)
