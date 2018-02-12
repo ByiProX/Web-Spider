@@ -16,7 +16,7 @@ from urllib import error
 
 if __name__ == "__main__":
     #一个不存在的连接
-    url = "http://www.iloveyou.com/"
+    url = "http://www.dskfclyfiydl.com/"
     req = request.Request(url)
     try:
         response = request.urlopen(req)
@@ -46,7 +46,7 @@ if __name__ == "__main__":
         responese = request.urlopen(req)
         # html = responese.read()
     except error.HTTPError as e:
-        print(e.code)
+        print(e.code, '\n' ,e.reason, '\n', e.headers)
 ```
 
 运行之后，我们可以看到404，这说明请求的资源没有在服务器上找到，www.douyu.com 这个服务器是存在的，但是我们要查找的 Jack_Cui.html 资源是没有的，所以抛出404异常。
@@ -68,18 +68,17 @@ from urllib import error
 
 if __name__ == "__main__":
     #一个不存在的连接
-    url = "http://www.douyu.com/Jack_Cui.html"
+    url = "http://www.douyu.com/wkx.html"
     req = request.Request(url)
     try:
         responese = request.urlopen(req)
     except error.URLError as e:
-        if hasattr(e, 'code')
+        if hasattr(e, 'code'):
             print("HTTPError")
             print(e.code)
-        elif hasattr(e, 'reason')
+        elif hasattr(e, 'reason'):
             print("URLError")
             print(e.reason)
-
 ```
 
 运行结果如下：
