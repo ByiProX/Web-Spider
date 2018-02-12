@@ -27,6 +27,7 @@ if __name__ == "__main__":
 ```
 
 可以看到如下运行结果：
+
 ![Screen Shot 2018-02-12 at 14.35.56.png](http://upload-images.jianshu.io/upload_images/2952111-5e9dfdc6af1af203.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 2.HTTPError
