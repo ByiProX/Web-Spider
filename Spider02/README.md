@@ -1,4 +1,7 @@
-一、urlopen的url参数 Agent
+## 疑问 ##
+为什么把url里的 '_o' 删掉后就可以正常爬取呢？
+
+### 一、urlopen的url参数 Agent
 
 
 url不仅可以是一个字符串，例如:http://www.baidu.com。
@@ -47,7 +50,7 @@ if __name__ == "__main__":
 ```
 
 
-二、urlopen的data参数
+### 二、urlopen的data参数
 
 我们可以使用data参数，向服务器发送数据。根据HTTP规范，GET用于信息获取，POST是向服务器提交数据的一种请求，再换句话说：
 
@@ -59,7 +62,7 @@ if __name__ == "__main__":
 
 data参数有自己的格式，它是一个基于application/x-www.form-urlencoded的格式，具体格式我们不用了解， 因为我们可以使用urllib.parse.urlencode()函数将字符串自动转换成上面所说的格式。
 
-三、发送data实例
+### 三、发送data实例
 
   向有道翻译发送data，得到翻译结果。
 
@@ -107,7 +110,7 @@ import json
 
 if __name__ == "__main__":
     #对应上图的Request URL
-    Request_URL = 'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule&smartresult=ugc&sessionFrom=https://www.baidu.com/link'
+    Request_URL = 'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule&sessionFrom=null'
     #创建Form_Data字典，存储上图的Form Data
     Form_Data = {}
     Form_Data['type'] = 'AUTO'
