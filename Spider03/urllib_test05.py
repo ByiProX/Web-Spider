@@ -4,7 +4,7 @@ from urllib import error
 
 if __name__ == "__main__":
     #一个不存在的连接
-    url = "http://www.iloveyou.com/"
+    url = "http://www.dskfclyfiydl.com/"
     req = request.Request(url)
     try:
         response = request.urlopen(req)
