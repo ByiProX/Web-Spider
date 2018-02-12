@@ -1,11 +1,13 @@
 ## 疑问 ##
-为什么把url里的 '_o' 删掉后就可以正常爬取呢？
+为什么把url里的 "_o" 删掉后就可以正常爬取呢？
 
-### 一、urlopen的url参数 Agent
+### 一、urlopen的url参数 Agent ###
 
 
 url不仅可以是一个字符串，例如:http://www.baidu.com。
+
 url也可以是一个Request对象，这就需要我们先定义一个Request对象，然后将这个Request对象作为urlopen的参数使用，方法如下：
+
 ```python
 # -*- coding: UTF-8 -*-
 from urllib import request
