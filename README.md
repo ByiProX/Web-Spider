@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### 从零开始学爬虫 ###
 =======
 # downloadXkcdPics
@@ -35,4 +36,14 @@ auto login of 163 qq .etc
 
 ## 学习使用 xpath 
 ## 注意py文件中页面寻找元素的一些方法
+>>>>>>> repo1
+=======
+# QuickWeatherByApi
+调用天气API快速查询天气数据
+
+
+http://www.haoservice.com/
+
+username： wangkx0105@outlook.com
+password:  opposite of light
 >>>>>>> repo1
