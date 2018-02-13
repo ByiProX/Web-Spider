@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### 从零开始学爬虫 ###
 =======
 # downloadXkcdPics
@@ -46,4 +47,11 @@ http://www.haoservice.com/
 
 username： wangkx0105@outlook.com
 password:  opposite of light
+>>>>>>> repo1
+=======
+# DownloadXkcdWithMultipleThreading
+
+
+多线程下载
+使用包 **threading**
 >>>>>>> repo1
