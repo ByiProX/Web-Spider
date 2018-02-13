@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-### 从零开始学爬虫 ###
-=======
-# downloadXkcdPics
->>>>>>> repo1
-=======
-# WebCrawlerHtml2PDF
->>>>>>> repo1
-=======
-# feelingluckyofbaidu
->>>>>>> repo1
-=======
 # antoMailLogin
 auto login of 163 qq .etc
 >* [Selenium with Python](http://selenium-python.readthedocs.io/)
@@ -35,4 +20,3 @@ auto login of 163 qq .etc
 
 ## 学习使用 xpath 
 ## 注意py文件中页面寻找元素的一些方法
->>>>>>> repo1
