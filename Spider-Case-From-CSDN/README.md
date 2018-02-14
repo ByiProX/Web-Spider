@@ -6,8 +6,8 @@
 - Spider03---urllib.error异常
 - Spider04---使用User Agent和代理IP隐藏身份
 - Spider05---Python3使用cookie模拟登陆获取信息
-Spider
-Spider
+- Spider06---使用Beautiful Soup爬取小说
+- Spider07---
 Spider
 Spider
 Spider
