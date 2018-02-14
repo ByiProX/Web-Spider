@@ -68,7 +68,7 @@ Form Data的内容记住，这些是我们编程需要用到的。user_login是�
 
 **1)将Cookie保存到变量中**
 
-首先，我们先利用CookieJar对象实现获取cookie的功能，存储到变量中，先来感受一下：
+首先，我们先利用CookieJar对象实现获取cookie的功能，存储到变量中，先来感受一下,执行文件cookie01.py：
 
 ```python
 # -*- coding: UTF-8 -*-
@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
 **2)保存Cookie到文件**
 
-在上面的方法中，我们将cookie保存到了cookie这个变量中，如果我们想将cookie保存到文件中该怎么做呢？方便以后直接读取文件使用，这时，我们就要用到FileCookieJar这个对象了，在这里我们使用它的子类MozillaCookieJar来实现Cookie的保存，编写代码如下：
+在上面的方法中，我们将cookie保存到了cookie这个变量中，如果我们想将cookie保存到文件中该怎么做呢？方便以后直接读取文件使用，这时，我们就要用到FileCookieJar这个对象了，在这里我们使用它的子类MozillaCookieJar来实现Cookie的保存，编写代码如下,文件为cookie02.py：
 ```python
 # -*- coding: UTF-8 -*-
 from urllib import request
@@ -130,7 +130,7 @@ cookie.save的参数说明：
 
 **3)从文件中获取Cookie并访问**
 
-我们已经做到把Cookie保存到文件中了，如果以后想使用，可以利用下面的方法来读取cookie并访问网站，感受一下：
+我们已经做到把Cookie保存到文件中了，如果以后想使用，可以利用下面的方法来读取cookie并访问网站，感受一下cookie03.py：
 ```python
 # -*- coding: UTF-8 -*-
 from urllib import request
