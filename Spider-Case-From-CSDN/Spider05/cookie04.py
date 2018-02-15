@@ -20,6 +20,7 @@ if __name__ == '__main__':
     Login_Data['user_pass'] = '********'        #改成你自己的密码
     #使用urlencode方法转换标准格式
     logingpostdata = parse.urlencode(Login_Data).encode('utf-8')
+    print(logingpostdata)
     #声明一个CookieJar对象实例来保存cookie
     cookie = cookiejar.CookieJar()
     #利用urllib.request库的HTTPCookieProcessor对象来创建cookie处理器,也就CookieHandler

@@ -2,6 +2,7 @@ from urllib import request
 from http import cookiejar
 
 if __name__ == '__main__':
+    # 读取cookie内容
     #声明一个CookieJar对象实例来保存cookie
     cookies = cookiejar.CookieJar()
     #利用urllib.request库的HTTPCookieProcessor对象来创建cookie处理器,也就CookieHandler
