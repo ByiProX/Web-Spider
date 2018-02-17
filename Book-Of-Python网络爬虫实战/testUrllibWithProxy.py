@@ -79,7 +79,8 @@ class TestProxy:
             print('连接错误，退出程序')
             exit()
         content = response.read().decode('utf-8')
-        if re.search(self.flagWord, content):
+        print(content)
+        if re.search(self.flagWord, content):  # 如果没有.decode('utf-8')，会报错哦
             print('已取得特征词，该代理可用')
         else:
             print('该代理不可用')
