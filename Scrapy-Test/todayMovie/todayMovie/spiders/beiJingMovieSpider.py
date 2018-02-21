@@ -9,11 +9,11 @@ class BeijingmoviespiderSpider(scrapy.Spider):
     start_urls = ['http://www.jycinema.com/html/default/index.html']
 
     def parse(self, response):
-        subSelector = response.xpath('//div[@class="film-list"]')
+        subSelector = response.xpath('//div[@class="col-3"]')
 
         items = []
         for sub in subSelector:
             item = TodaymovieItem()
-            item['movieName'] = sub.xpath('./a/span/text()').extract()
+            item['movieName'] = sub.xpath('./div/a/span/text()').extract()
             items.append(item)
         return items
