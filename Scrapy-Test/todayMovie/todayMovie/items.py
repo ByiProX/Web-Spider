@@ -11,4 +11,4 @@ import scrapy
 class TodaymovieItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    movieName = scrapy.Field()  # 电影名称
