@@ -5,7 +5,7 @@ from weather.items import WeatherItem
 
 class BeijingspiderSpider(scrapy.Spider):
     name = 'BeijingSpider'
-    allowed_domains = ['beijing.tianqi.com']
+    allowed_domains = ['tianqi.com']
     # start_urls = ['http://beijing.tianqi.com/']
     citys = ['beijing', 'shanghai', 'weifang']
     start_urls = []
