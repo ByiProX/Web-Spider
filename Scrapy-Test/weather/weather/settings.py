@@ -68,6 +68,7 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
    'weather.pipelines.WeatherPipeline': 300,
    'weather.pipelines2json.WeatherPipeline': 300,
+   'weather.pipelines2mysql.WeatherPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
