@@ -17,5 +17,6 @@ class WeatherPipeline(object):
             fp.write(str(item['week'][0]) + '\t')
             fp.write(str(item['weather']) + '\t')
             fp.write(str(item['air'][0]) + '\n\n')
+            # fp.write(str(item) + '\n\n') 测试一下item数据类型
 
         return item
