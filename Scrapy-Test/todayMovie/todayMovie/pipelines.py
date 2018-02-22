@@ -11,5 +11,5 @@ class TodaymoviePipeline(object):
         now = time.strftime('%Y-%m-%d', time.localtime())
         fileNme = 'Beijng' + now + '.txt'
         with open(fileNme, 'a') as fp:
-            fp.write(item['movieName'][0].encode('utf-8') + '\n\n')
+            fp.write(str(item['movieName'][0]) + '\n\n')
         return item
