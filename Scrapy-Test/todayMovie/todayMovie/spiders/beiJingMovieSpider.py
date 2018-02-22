@@ -5,15 +5,15 @@ from todayMovie.items import TodaymovieItem
 
 class BeijingmoviespiderSpider(scrapy.Spider):
     name = 'beiJingMovieSpider'
-    allowed_domains = ['jycinema.com']
-    start_urls = ['http://www.jycinema.com/html/default/index.html']
+    allowed_domains = ['dianying.taobao.com']
+    start_urls = ['https://dianying.taobao.com/']
 
     def parse(self, response):
-        subSelector = response.xpath('//div[@class="col-3"]')
+        subSelector = response.xpath('//div[@class="movie-card-name"]')
 
         items = []
         for sub in subSelector:
             item = TodaymovieItem()
-            item['movieName'] = sub.xpath('./div/a/span/text()').extract()
+            item['movieName'] = sub.xpath('./span[@class="bt-l"]/text()').extract()
             items.append(item)
         return items
