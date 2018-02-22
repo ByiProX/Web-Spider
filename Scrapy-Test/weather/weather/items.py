@@ -11,7 +11,8 @@ import scrapy
 class WeatherItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    cityName = scrapy.Feild()
-    week = scrapy.Feild()
-    weather = scrapy.Feild()
-    air = scrapy.Feild()
+    cityName = scrapy.Field()
+    week = scrapy.Field()
+    weather = scrapy.Field()
+    air = scrapy.Field()
+    img = scrapy.Field()
