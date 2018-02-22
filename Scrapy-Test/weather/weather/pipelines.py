@@ -15,7 +15,7 @@ class WeatherPipeline(object):
         with open(fileName, 'a') as fp:
             fp.write(str(item['cityName'][0]) + '\t')
             fp.write(str(item['week'][0]) + '\t')
-            fp.write(str(item['weather'][0]) + '\t')
+            fp.write(str(item['weather']) + '\t')
             fp.write(str(item['air'][0]) + '\n\n')
 
         return item
