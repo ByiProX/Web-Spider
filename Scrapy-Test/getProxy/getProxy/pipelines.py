@@ -8,4 +8,16 @@
 
 class GetproxyPipeline(object):
     def process_item(self, item, spider):
+        fileName = 'proxy.txt'
+        with open(fileName, 'a') as fp:
+            fp.write(str(item['ip']) + '\t')
+            fp.write(str(item['port']) + '\t')
+            fp.write(str(item['protocol']) + '\t')
+            fp.write(str(item['crypt']) + '\t')
+            fp.write(str(item['location']) + '\t')
+            fp.write(str(item['source']) + '\n')
+
+
+
+
         return item

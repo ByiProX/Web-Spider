@@ -9,16 +9,14 @@ class KuaidailispiderSpider(scrapy.Spider):
 
     def parse(self, response):
         subSelector = response.xpath('//div[@id="list"]/table//tbody/tr')
-
         items = []
         for sub in subSelector:
-            item = GetproxyItem
-            for i in sub:
-                item['ip'] = i.xpath('./td[@data-title="IP"]/text()').extract()
-                item['port'] = i.xpath('./td[@data-title="PORT"]/text()').extract()
-                item['protocol'] = i.xpath('./td[@data-title="类型"]/text()').extract()
-                item['crypt'] = i.xpath('./td[@data-title="匿名度"]/text()').extract()
-                item['location'] = i.xpath('./td[@data-title="位置"]/text()').extract()
-                item['source'] = '快代理'
-
+            item = GetproxyItem()
+            item['ip'] = sub.xpath('./td[@data-title="IP"]/text()').extract()[0]
+            item['port'] = sub.xpath('./td[@data-title="PORT"]/text()').extract()[0]
+            item['protocol'] = sub.xpath('./td[@data-title="类型"]/text()').extract()[0]
+            item['crypt'] = sub.xpath('./td[@data-title="匿名度"]/text()').extract()[0]
+            item['location'] = sub.xpath('./td[@data-title="位置"]/text()').extract()[0]
+            item['source'] = '快代理'
+            items.append(item)
         return items
