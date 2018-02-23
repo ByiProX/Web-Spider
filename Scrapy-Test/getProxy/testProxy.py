@@ -18,7 +18,7 @@ class TestProxy(object):
 
     def run(self):
         with open(self.sFile, 'r') as fp:
-            lines = fp.readlines()[:100]
+            lines = fp.readlines()
             line = lines.pop()
             while lines:
                 for i in range(self.threads):
