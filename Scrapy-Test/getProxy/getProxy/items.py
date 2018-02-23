@@ -11,4 +11,9 @@ import scrapy
 class GetproxyItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    ip = scrapy.Field()
+    port = scrapy.Field()
+    protocol = scrapy.Field()
+    crypt = scrapy.Field()
+    location = scrapy.Field()
+    source = scrapy.Field()
