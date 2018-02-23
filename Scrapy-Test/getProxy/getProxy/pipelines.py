@@ -17,7 +17,4 @@ class GetproxyPipeline(object):
             fp.write(str(item['location']) + '\t')
             fp.write(str(item['source']) + '\n')
 
-
-
-
         return item
