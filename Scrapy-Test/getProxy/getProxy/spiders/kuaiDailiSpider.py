@@ -5,7 +5,10 @@ from getProxy.items import GetproxyItem
 class KuaidailispiderSpider(scrapy.Spider):
     name = 'kuaiDailiSpider'
     allowed_domains = ['kuaidaili.com']
-    start_urls = ['http://kuaidaili.com/free']
+    # start_urls = ['http://kuaidaili.com/free/inha/1/']
+    start_urls = []
+    for i in range(1,10):
+        start_urls.append('http://kuaidaili.com/free/inha/' + str(i))
 
     def parse(self, response):
         subSelector = response.xpath('//div[@id="list"]/table//tbody/tr')
