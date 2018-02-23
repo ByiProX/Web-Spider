@@ -16,7 +16,7 @@ class BeijingspiderSpider(scrapy.Spider):
         subSelector = response.xpath('//dl[@class="weather_info"]')
         items = []
         for sub in subSelector:
-            item =WeatherItem()
+            item = WeatherItem()
             item['img'] = sub.xpath('./dt/img/@src').extract()
             item['cityName'] = sub.xpath('./dd[@class="name"]/h2/text()').extract()
             item['week'] = sub.xpath('./dd[@class="week"]/text()').extract()
