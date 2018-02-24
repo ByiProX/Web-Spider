@@ -11,7 +11,7 @@ import scrapy
 class QiushiwikiItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    anthor = scrapy.Field()
+    author = scrapy.Field()
     content = scrapy.Field()
     img = scrapy.Field()
     funNum = scrapy.Field()

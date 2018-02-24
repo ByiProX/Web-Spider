@@ -22,22 +22,22 @@ class QiushiwikiPipeline(object):
 
         with open(fileName, 'a') as fp:
             fp.write('-'*50 + '\n' + '*'*50 +'\n')
-            fp.write('author:\t %s\n' %(item['author']))
-            fp.write('content:\t %s\n' %(item['content']))
+            fp.write('author: %s\n' %(item['author']))
+            fp.write('content: %s\n' %(item['content']))
 
             try:
-                imgUrl =item['img'][0]
+                imgUrl ='https:' + item['img'][0]
             except IndexError:
                 pass
             else:
                 imgName = os.path.basename(imgUrl)
-                fp.write('img:\t %s\n' %(imgName))
+                fp.write('img: %s\n' %(imgName))
                 imgPathName = imgDir + os.sep + imgName  # os.path兼容Windows和Mac
                 with open(imgPathName, 'wb') as fpi:
-                    response = urllib.urlopen(imgUrl)
+                    response = urllib.request.urlopen(imgUrl)
                     fpi.write(response.read())
             fp.write('fun:%s\t talk:%s\n' %(item['funNum'],item['talkNum']))
-            fp.write('-'*50 + '\n' + '*'*50 +'\n')
+            fp.write('\n' + '-'*50 + '\n' + '*'*50 +'\n')
 
 
 

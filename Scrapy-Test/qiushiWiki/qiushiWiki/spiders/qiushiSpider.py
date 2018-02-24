@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from qiushiWiki.items import QiushiwikiItem
 
 
 class QiushispiderSpider(scrapy.Spider):
-    name = 'QiushiSpider'
+    name = 'qiushiSpider'
     allowed_domains = ['qiushibaike.com']
     start_urls = []
-    for i in range(1,21):
+    for i in range(1,3):
         url = 'http://www.qiushibaike.com/hot/page/' + str(i) + '/'
         start_urls.append(url)
 
@@ -14,9 +15,9 @@ class QiushispiderSpider(scrapy.Spider):
         subSelector = response.xpath('//div[starts-with(@class,"article block untagged mb15 typs_")]')
         items = []
         for sub in subSelector:
-            item = QiushiItem()
+            item = QiushiwikiItem()
             item['author'] = sub.xpath('.//h2/text()').extract()[0]
-            item['content'] = subxpath('.//div[@class="content"]/span/text()').extract()[0].strip()
+            item['content'] = sub.xpath('.//div[@class="content"]/span/text()').extract()[0].strip()
             item['img'] = sub.xpath('.//div[@class="thumb"]//img/@src').extract()
             item['funNum'] = sub.xpath('.//i[@class="number"]/text()').extract()[0]
             try:
