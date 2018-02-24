@@ -72,6 +72,9 @@ class QiushiwikiDownloaderMiddleware(object):
         # Called for each request that goes through the downloader
         # middleware.
 
+        ua = 'Mozilla/5.0 (Windows NT 6.3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36'
+        request.headers.setdefault('User-Agent', ua)
+
         # Must either:
         # - return None: continue processing this request
         # - or return a Response object
