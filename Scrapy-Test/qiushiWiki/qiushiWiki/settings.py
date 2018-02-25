@@ -53,10 +53,11 @@ ROBOTSTXT_OBEY = True
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'qiushiWiki.middlewares.QiushiwikiDownloaderMiddleware': 543,
-
-   # 禁止内置的(在 DOWNLOADER_MIDDLEWARES_BASE 中设置并默认启用的)中间件
-   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'qiushiWiki.middlewares.ProxyMiddleware': 10,
+    'qiushiWiki.middlewares.QiushiwikiDownloaderMiddleware': 30,
+    # 禁止内置的(在 DOWNLOADER_MIDDLEWARES_BASE 中设置并默认启用的)中间件
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware':20,
 }
 
 # Enable or disable extensions

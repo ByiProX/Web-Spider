@@ -8,6 +8,14 @@
 from scrapy import signals
 
 
+class ProxyMiddleware(object):
+    def process_request(self, request, spider):
+        request.meta['proxy'] = 'http://111.155.116.200:8123'
+        # request.meta['proxy'] = 'http://59.110.221.56:8080'
+        # return None
+
+
+
 class QiushiwikiSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
