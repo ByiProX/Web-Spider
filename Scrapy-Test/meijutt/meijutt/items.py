@@ -11,4 +11,7 @@ import scrapy
 class MeijuttItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    storyName = scrapy.Field()
+    storyState = scrapy.Field()
+    tvStation = scrapy.Field()
+    updateTime = scrapy.Field()
