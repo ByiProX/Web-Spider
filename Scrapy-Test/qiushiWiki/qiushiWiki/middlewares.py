@@ -10,9 +10,9 @@ from scrapy import signals
 
 class ProxyMiddleware(object):
     def process_request(self, request, spider):
-        request.meta['proxy'] = 'http://111.155.116.200:8123'
+        request.meta['proxy'] = 'http://111.155.116.236:8123'
         # request.meta['proxy'] = 'http://59.110.221.56:8080'
-        # return None
+        # return None111.155.116.236
 
 
 

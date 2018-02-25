@@ -53,12 +53,32 @@ ROBOTSTXT_OBEY = True
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'qiushiWiki.middlewares.ProxyMiddleware': 10,
+    # 'qiushiWiki.middlewares.ProxyMiddleware': 10,
+    'qiushiWiki.middlewares.ProxyMiddleware': None,
     'qiushiWiki.middlewares.QiushiwikiDownloaderMiddleware': 30,
     # 禁止内置的(在 DOWNLOADER_MIDDLEWARES_BASE 中设置并默认启用的)中间件
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
     # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware':20,
 }
+
+# 默认
+# {
+#     'scrapy.contrib.downloadermiddleware.robotstxt.RobotsTxtMiddleware': 100,
+#     'scrapy.contrib.downloadermiddleware.httpauth.HttpAuthMiddleware': 300,
+#     'scrapy.contrib.downloadermiddleware.downloadtimeout.DownloadTimeoutMiddleware': 350,
+#     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': 400,
+#     'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware': 500,
+#     'scrapy.contrib.downloadermiddleware.defaultheaders.DefaultHeadersMiddleware': 550,
+#     'scrapy.contrib.downloadermiddleware.redirect.MetaRefreshMiddleware': 580,
+#     'scrapy.contrib.downloadermiddleware.httpcompression.HttpCompressionMiddleware': 590,
+#     'scrapy.contrib.downloadermiddleware.redirect.RedirectMiddleware': 600,
+#     'scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware': 700,
+#     'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 750,
+#     'scrapy.contrib.downloadermiddleware.chunked.ChunkedTransferMiddleware': 830,
+#     'scrapy.contrib.downloadermiddleware.stats.DownloaderStats': 850,
+#     'scrapy.contrib.downloadermiddleware.httpcache.HttpCacheMiddleware': 900,
+# }
+
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

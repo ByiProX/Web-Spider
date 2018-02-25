@@ -7,7 +7,7 @@ class QiushispiderSpider(scrapy.Spider):
     name = 'qiushiSpider'
     allowed_domains = ['qiushibaike.com']
     start_urls = []
-    for i in range(1,4):
+    for i in range(1,11):
         url = 'http://www.qiushibaike.com/hot/page/' + str(i) + '/'
         start_urls.append(url)
 
