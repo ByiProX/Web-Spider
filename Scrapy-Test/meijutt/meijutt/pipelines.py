@@ -11,9 +11,9 @@ class MeijuttPipeline(object):
         today = time.strftime('%Y%m%d', time.localtime())
         fileName = today + 'meiju.txt'
         with open(fileName, 'a') as fp:
-            fp.write('%s \t' %(item['storyName']))
-            fp.write('%s \t' %(item['storyState']))
-            fp.write('%s \t' %(item['tvStation']))
+            fp.write('%-20s' %(item['storyName']))
+            fp.write('%-15s' %(item['storyState']))
+            fp.write('%-15s' %(item['tvStation']))
             fp.write('%s \n' %(item['updateTime']))
 
 
