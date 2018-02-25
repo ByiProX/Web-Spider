@@ -6,6 +6,16 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from .UAResource import UserAgents
+import random
+
+
+class RandomUerAgent(object):
+    """docstring for RandomUerAgent."""
+    def process_request(self, request, spider):
+        ua = random.choice(UserAgents)
+        request.headers.setdefault('User-Agent', ua)
+
 
 
 class MeijuttSpiderMiddleware(object):
