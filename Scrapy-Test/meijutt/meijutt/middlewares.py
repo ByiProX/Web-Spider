@@ -7,15 +7,22 @@
 
 from scrapy import signals
 from .UAResource import UserAgents
+from .UAResource import Proxies
 import random
 
 
-class RandomUerAgent(object):
+class RandomProxy(object):
+    def process_request(self, request, spider):
+        proxy = random.choice(Proxies)
+        request.meta['proxy'] = proxy
+
+
+
+class RandomUserAgent(object):
     """docstring for RandomUerAgent."""
     def process_request(self, request, spider):
         ua = random.choice(UserAgents)
         request.headers.setdefault('User-Agent', ua)
-
 
 
 class MeijuttSpiderMiddleware(object):

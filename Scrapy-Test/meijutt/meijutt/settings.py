@@ -52,9 +52,11 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
+########################################################################
 DOWNLOADER_MIDDLEWARES = {
    # 'meijutt.middlewares.MeijuttDownloaderMiddleware': 543,
-   'meijutt.middlewares.RandomUerAgent': 30,
+   'meijutt.middlewares.RandomProxy': None,
+   'meijutt.middlewares.RandomUserAgent': 30,
 
    # 禁止内置的(在 DOWNLOADER_MIDDLEWARES_BASE 中设置并默认启用的)中间件
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
