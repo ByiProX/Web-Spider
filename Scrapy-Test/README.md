@@ -41,7 +41,6 @@ UserAgents = [
   "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 ]
 
-
 Proxies = [
 'http://122.114.31.177:808',
 'http://1.2.3.4:80',
