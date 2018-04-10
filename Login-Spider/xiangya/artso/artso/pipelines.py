@@ -8,4 +8,13 @@
 
 class ArtsoPipeline(object):
     def process_item(self, item, spider):
+        fileName = 'xiangya.txt'
+        with open(fileName, 'a') as fp:
+            fp.write(str(item['name']) + '\t')
+            fp.write(str(item['writer']) + '\t')
+            fp.write(str(item['size']) + '\t')
+            fp.write(str(item['type']) + '\t')
+            fp.write(str(item['time']) + '\t')
+            fp.write(str(item['url']) + '\n')
+
         return item

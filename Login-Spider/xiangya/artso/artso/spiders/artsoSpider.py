@@ -13,8 +13,8 @@ class ArtsospiderSpider(scrapy.Spider):
     # start_urls = ['http://artso.artron.net/auction/search_auction.php?keyword=象牙']
     start_urls = []
     for i in range(1,11):
-        url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=1' +\
-        str(i) + '/'
+        url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
+               str(i) + '/'
         start_urls.append(url)
 
     def parse(self, response):
@@ -23,7 +23,10 @@ class ArtsospiderSpider(scrapy.Spider):
         items = []
         for sub in subSelector:
             item = ArtsoItem()
-            innerURL = sub.xpath('./div/a/@href').extract()[0]
+            try:
+                innerURL = sub.xpath('./div/a/@href').extract()[0]
+            except IndexError:
+                continue
             item['url'] = innerURL
 
             head = {}
@@ -49,11 +52,10 @@ class ArtsospiderSpider(scrapy.Spider):
             item['real_price3'] = ''
             item['real_price4'] = ''
 
-            item['special_performance'] =
-            item['auction_time'] =
-            item['auction_company'] =
-            item['auction'] =
-
+            item['special_performance'] = ''
+            item['auction_time'] = ''
+            item['auction_company'] = ''
+            item['auction'] = ''
 
             items.append(item)
         return items
