@@ -3,6 +3,7 @@ import scrapy
 from urllib import request
 from artso.items import ArtsoItem
 from bs4 import BeautifulSoup
+from lxml import etree
 
 
 class ArtsospiderSpider(scrapy.Spider):
@@ -29,26 +30,24 @@ class ArtsospiderSpider(scrapy.Spider):
             #写入User Agent信息
             head['User-Agent'] = 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19'
             #创建Request对象
-            req = request.Request(url, headers=head)
+            req = request.Request(innerURL, headers=head)
             #传入创建好的Request对象
             res = request.urlopen(req)
             context = res.read().decode('utf-8')
-            soup = BeautifulSoup(text,'lxml')
+            soup = BeautifulSoup(context,'lxml')
 
+            selector = etree.HTML(str(soup))
+            item['name'] = selector[0].xpath('//div[@class="titLeft"]/h1/text()')[0].strip()
+            item['writer'] = selector[0].xpath('//tr[1]/td[1]/text()')[0].strip()
+            item['size'] = selector[0].xpath('//tr[1]/td[2]//text()')[0].strip()
+            item['type'] = selector[0].xpath('//tr[2]/td[1]//text()')[0].strip()
+            item['time'] = selector[0].xpath('//tr[2]/td[2]//text()')[0].strip()
+            item['expected_price'] = ' '.join(selector[0].xpath('//tr[3]/td[1]//text()')[1].strip().split())
 
-
-
-            item['name'] =
-            item['writer'] =
-            item['size'] =
-            item['type'] =
-            item['time'] =
-            item['expected_price'] =
-
-            item['real_price1'] =
-            item['real_price2'] =
-            item['real_price3'] =
-            item['real_price4'] =
+            item['real_price1'] = ''
+            item['real_price2'] = ''
+            item['real_price3'] = ''
+            item['real_price4'] = ''
 
             item['special_performance'] =
             item['auction_time'] =
