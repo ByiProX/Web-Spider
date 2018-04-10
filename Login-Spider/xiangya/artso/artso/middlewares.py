@@ -6,6 +6,22 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from UAResources import UserAgents
+from ProxyResources import Proxies
+import random
+
+
+class RandomProxy(object):
+    def process_request(self, request, spider):
+        proxy = random.choice(Proxies)
+        request.meta['proxy'] = proxy
+
+
+class RandomUserAgent(object):
+    """docstring for RandomUerAgent."""
+    def process_request(self, request, spider):
+        ua = random.choice(UserAgents)
+        request.headers.setdefault('User-Agent', ua)
 
 
 class ArtsoSpiderMiddleware(object):

@@ -11,7 +11,7 @@ class ArtsoPipeline(object):
 
         expected_price = item['expected_price']
         real_priceRMB = item['real_priceRMB']
-        real_priceHKB = item['real_priceHKB']
+        real_priceHKD = item['real_priceHKD']
         real_priceUSD = item['real_priceUSD']
         real_priceEUR = item['real_priceEUR']
 
@@ -30,7 +30,7 @@ class ArtsoPipeline(object):
         		db='artsoDB',
         		charset = 'utf8')
         cur = conn.cursor()
-        cur.execute("INSERT INTO xiangyaAuction(name,writer,size,type,era,expected_price,real_priceRMB,real_priceUSD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (name,writer,size,type,era,expected_price,real_priceRMB,real_priceUSD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url))
+        cur.execute("INSERT INTO xiangyaAuction(name,writer,size,type,era,expected_price,real_priceRMB,real_priceHKD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (name,writer,size,type,era,expected_price,real_priceRMB,real_priceHKD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url))
         cur.close()
         conn.commit()
         conn.close()

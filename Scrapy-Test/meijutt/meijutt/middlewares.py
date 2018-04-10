@@ -17,7 +17,6 @@ class RandomProxy(object):
         request.meta['proxy'] = proxy
 
 
-
 class RandomUserAgent(object):
     """docstring for RandomUerAgent."""
     def process_request(self, request, spider):

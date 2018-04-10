@@ -12,7 +12,7 @@ class ArtsospiderSpider(scrapy.Spider):
     # start_urls = ['http://artso.artron.net/']
     # start_urls = ['http://artso.artron.net/auction/search_auction.php?keyword=象牙']
     start_urls = []
-    for i in range(1,6):
+    for i in range(1,3):
         url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
                str(i) + '/'
         start_urls.append(url)
@@ -48,7 +48,7 @@ class ArtsospiderSpider(scrapy.Spider):
             item['expected_price'] = ' '.join(selector[0].xpath('//tr[3]/td[1]//text()')[1].strip().split())
 
             item['real_priceRMB'] = ''
-            item['real_priceHKB'] = ''
+            item['real_priceHKD'] = ''
             item['real_priceUSD'] = ''
             item['real_priceEUR'] = ''
 

@@ -55,7 +55,7 @@ COOKIES_ENABLED = False
 ########################################################################
 DOWNLOADER_MIDDLEWARES = {
    # 'meijutt.middlewares.MeijuttDownloaderMiddleware': 543,
-   'meijutt.middlewares.RandomProxy': None,
+   'meijutt.middlewares.RandomProxy': 10,
    'meijutt.middlewares.RandomUserAgent': 30,
 
    # 禁止内置的(在 DOWNLOADER_MIDDLEWARES_BASE 中设置并默认启用的)中间件

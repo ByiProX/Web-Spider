@@ -19,7 +19,7 @@ class ArtsoItem(scrapy.Item):
     expected_price = scrapy.Field()
 
     real_priceRMB = scrapy.Field()
-    real_priceHKB = scrapy.Field()
+    real_priceHKD = scrapy.Field()
     real_priceUSD = scrapy.Field()
     real_priceEUR = scrapy.Field()
 
