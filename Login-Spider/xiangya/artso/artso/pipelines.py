@@ -14,7 +14,7 @@ class ArtsoPipeline(object):
             fp.write(str(item['writer']) + '\t')
             fp.write(str(item['size']) + '\t')
             fp.write(str(item['type']) + '\t')
-            fp.write(str(item['time']) + '\t')
+            fp.write(str(item['era']) + '\t')
             fp.write(str(item['url']) + '\n')
 
         return item

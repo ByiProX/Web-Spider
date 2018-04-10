@@ -66,6 +66,7 @@ DOWNLOAD_DELAY = 1
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'artso.pipelines.ArtsoPipeline': 300,
+   'artso.pipelines2mysql.ArtsoPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

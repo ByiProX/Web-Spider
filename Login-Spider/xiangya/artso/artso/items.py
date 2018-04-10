@@ -15,13 +15,13 @@ class ArtsoItem(scrapy.Item):
     writer = scrapy.Field()
     size = scrapy.Field()
     type = scrapy.Field()
-    time = scrapy.Field()
+    era = scrapy.Field()
     expected_price = scrapy.Field()
 
-    real_price1 = scrapy.Field()
-    real_price2 = scrapy.Field()
-    real_price3 = scrapy.Field()
-    real_price4 = scrapy.Field()
+    real_priceRMB = scrapy.Field()
+    real_priceHKB = scrapy.Field()
+    real_priceUSD = scrapy.Field()
+    real_priceEUR = scrapy.Field()
 
     special_performance = scrapy.Field()
     auction_time = scrapy.Field()
