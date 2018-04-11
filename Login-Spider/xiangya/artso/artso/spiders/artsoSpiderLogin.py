@@ -7,18 +7,32 @@ from bs4 import BeautifulSoup
 from lxml import etree
 from random import randrange
 
-
-class ArtsospiderSpider(scrapy.Spider):
-    name = 'artsoSpider'
-    allowed_domains = ['artso.artron.net']
-    start_urls = []
-    for i in range(1,3):
-        url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
-               str(i) + '/'
-        start_urls.append(url)
+class ArtsospiderloginSpider(scrapy.Spider):
+    name = 'artsoSpiderLogin'
+    # allowed_domains = ['artso.artron.net']
+    start_urls = ['https://passport.artron.net/login']
 
 
     def parse(self, response):
+        return scrapy.FormRequest.from_response(
+            response,
+            formdata = {'account': '17888816733', 'passwd': 'doodo123456789'},
+            callback = self.after_login
+        )
+
+    def after_login(self, response):
+        # check login succeed before going on
+        if "authentication failed" in str(response.body):
+            self.logger.error("Login failed")
+            return
+        # continue scraping with authenticated session...
+        else:
+            for i in range(1,3):
+                url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
+                       str(i) + '/'
+                yield scrapy.Request(url=url, callback=self.parse_tastypage)
+
+    def parse_tastypage(self, response):
         subSelector = response.xpath('//div[@class="listImg"]/ul/li')
 
         items = []
