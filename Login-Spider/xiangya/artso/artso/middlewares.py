@@ -6,8 +6,8 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-from UAResources import UserAgents
-from ProxyResources import Proxies
+from .UAResources import UserAgents
+from .ProxyResources import Proxies
 import random
 
 

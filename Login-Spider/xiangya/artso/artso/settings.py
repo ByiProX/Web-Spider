@@ -8,6 +8,7 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+from random import randrange
 
 BOT_NAME = 'artso'
 
@@ -39,10 +40,11 @@ DOWNLOAD_DELAY = 2
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+  # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  # 'Accept-Language': 'en',
+  'Referer': 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&page=' + str(randrange(100)),
+}
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
@@ -53,7 +55,7 @@ DOWNLOAD_DELAY = 2
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'artso.middlewares.RandomProxy':10,
+   'artso.middlewares.RandomProxy': None,
    'artso.middlewares.RandomUserAgent':20,
    # 'artso.middlewares.ArtsoDownloaderMiddleware': 543,
    'artso.middlewares.ArtsoDownloaderMiddleware': None,

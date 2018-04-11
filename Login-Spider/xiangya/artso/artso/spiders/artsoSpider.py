@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import time
 from urllib import request
 from artso.items import ArtsoItem
 from bs4 import BeautifulSoup
 from lxml import etree
+from random import randrange
 
 
 class ArtsospiderSpider(scrapy.Spider):
@@ -31,6 +33,7 @@ class ArtsospiderSpider(scrapy.Spider):
 
             head = {}
             #写入User Agent信息
+            head['Referer'] = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&page=' + str(randrange(100))
             head['User-Agent'] = 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19'
             #创建Request对象
             req = request.Request(innerURL, headers=head)
@@ -58,4 +61,5 @@ class ArtsospiderSpider(scrapy.Spider):
             item['auction'] = ''
 
             items.append(item)
+            # time.sleep(0.05)
         return items
