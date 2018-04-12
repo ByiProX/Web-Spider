@@ -5,22 +5,22 @@ USE artsoDB;
 -- 创建表
 CREATE TABLE xiangyaAuction(
     id INT AUTO_INCREMENT,
-    name char(32),
-    writer char(32),
-    size char(32),
-    era char(32),
-    type char(32),
-    expected_price char(32),
+    name char(128),
+    writer char(64),
+    size char(64),
+    era char(64),
+    type char(64),
+    expected_price char(64),
 
-    real_priceRMB char(32),
-    real_priceHKD char(32),
-    real_priceUSD char(32),
-    real_priceEUR char(32),
+    real_priceRMB char(64),
+    real_priceHKD char(64),
+    real_priceUSD char(64),
+    real_priceEUR char(64),
 
-    special_performance char(32),
-    auction_time char(32),
-    auction_company char(32),
-    auction char(32),
+    special_performance char(64),
+    auction_time char(64),
+    auction_company char(64),
+    auction char(128),
     url char(255),
     PRIMARY KEY(id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;

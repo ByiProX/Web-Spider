@@ -21,7 +21,6 @@ class ArtsoPipeline(object):
         auction = item['auction']
         url = item['url']
 
-
         conn = MySQLdb.connect(
         		host='localhost',
         		port=3306,
