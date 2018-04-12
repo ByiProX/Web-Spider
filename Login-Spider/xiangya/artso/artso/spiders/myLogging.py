@@ -29,13 +29,15 @@ class MyLogging(object):
         self.logger.setLevel(logging.INFO)  # log等级总开关
 
         # 第二步 创建一个handler，用于写入日志文件
-        logfile = './' + sys.argv[0][0:-3] + '.log'
+        # logfile = './' + sys.argv[0][0:-3] + '.log'
+        logfile = 'Scrapy.log'
+
         fh = logging.FileHandler(logfile, 'w+')
-        fh.setLevel(logging.DEBUG)  # 只有错误才被记录到file中
+        fh.setLevel(logging.WARNING)  # 只有错误才被记录到file中
 
         # 第三步 再创建一个handler，用于输出到控制台console
         ch = logging.StreamHandler()
-        ch.setLevel(logging.WARNING)  # 只有错误才被记录到console中
+        ch.setLevel(logging.ERROR)  # 只有错误才被记录到console中
 
         # 第四步 定义handler的输出格式
         formatter = logging.Formatter('%(asctime)-12s %(levelname)-8s %(name)-10s %(message)-12s')

@@ -7,6 +7,9 @@ from artso.items import ArtsoItem
 from bs4 import BeautifulSoup
 from lxml import etree
 from random import randrange
+from .myLogging import MyLogging
+
+LOG = MyLogging()
 
 
 class ArtsospiderSpider(scrapy.Spider):
@@ -14,10 +17,11 @@ class ArtsospiderSpider(scrapy.Spider):
     allowed_domains = ['artso.artron.net']
     # 此处可以优化，以后再说
     start_urls = []
-    for i in range(1, 421):
+    for i in range(1, 201):
         url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
                str(i) + '/'
         start_urls.append(url)
+
 
     def parse(self, response):
         innerPageNum = 0
@@ -91,4 +95,6 @@ class ArtsospiderSpider(scrapy.Spider):
 
             items.append(item)
             time.sleep(2)
+            LOG.warning(response)
+        time.sleep(1)
         return items
