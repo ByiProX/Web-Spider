@@ -12,14 +12,15 @@ from random import randrange
 class ArtsospiderSpider(scrapy.Spider):
     name = 'artsoSpider'
     allowed_domains = ['artso.artron.net']
+    # 此处可以优化，以后再说
     start_urls = []
-    for i in range(1, 2):
+    for i in range(1, 421):
         url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
                str(i) + '/'
         start_urls.append(url)
 
-
     def parse(self, response):
+        innerPageNum = 0
         subSelector = response.xpath('//div[@class="listImg"]/ul/li')
 
         items = []
@@ -27,11 +28,12 @@ class ArtsospiderSpider(scrapy.Spider):
             item = ArtsoItem()
             try:
                 innerURL = sub.xpath('./div/a/@href').extract()[0]
+                innerPageNum += 1
             except IndexError:
                 continue
             item['url'] = innerURL
 
-            print('正在爬取' + innerURL)
+            print('正在爬取当前页面中的第%d个网址 %s' %(innerPageNum,innerURL))
 
             head = {}
             #写入User Agent信息
@@ -88,5 +90,5 @@ class ArtsospiderSpider(scrapy.Spider):
                     item['auction'] = selector[0].xpath('//tr[6]/td[2]//text()')[0].strip()
 
             items.append(item)
-            time.sleep(0.5)
+            time.sleep(2)
         return items
