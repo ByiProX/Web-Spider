@@ -13,7 +13,7 @@ class ArtsospiderSpider(scrapy.Spider):
     name = 'artsoSpider'
     allowed_domains = ['artso.artron.net']
     start_urls = []
-    for i in range(1, 11):
+    for i in range(1, 2):
         url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
                str(i) + '/'
         start_urls.append(url)
@@ -30,6 +30,8 @@ class ArtsospiderSpider(scrapy.Spider):
             except IndexError:
                 continue
             item['url'] = innerURL
+
+            print('正在爬取' + innerURL)
 
             head = {}
             #写入User Agent信息
@@ -51,36 +53,39 @@ class ArtsospiderSpider(scrapy.Spider):
             item['era'] = selector[0].xpath('//tr[2]/td[2]//text()')[0].strip()
             item['expected_price'] = ' '.join(selector[0].xpath('//tr[3]/td[1]//text()')[1].strip().split())
 
-            if selector[0].xpath('//tr[4]/th[1]//text()')[0].strip() == '成交价':
-                # print(selector[0].xpath('//tr[4]/td[1]//text()')[0].strip())
-                if selector[0].xpath('//tr[4]/td[1]/ul/li[1]/text()')[0].strip() in ['未提供', '流标', '流拍']:
-                    item['real_priceRMB'] = item['real_priceHKD'] = item['real_priceUSD'] = item['real_priceEUR'] = selector[0].xpath('//tr[4]/td[1]/ul/li[1]/text()')[0].strip()
+            if selector[0].xpath('//tr[4]/th[1]//text()')[0].strip() == '专场':
+                item['real_priceRMB'] = '--'
+                item['real_priceHKD'] = '--'
+                item['real_priceUSD'] = '--'
+                item['real_priceEUR'] = '--'
+
+                item['special_performance'] = selector[0].xpath('//tr[4]/td[1]/a//text()')[0].strip()
+                item['auction_time'] = selector[0].xpath('//tr[4]/td[2]//text()')[0].strip()
+                item['auction_company'] = selector[0].xpath('//tr[5]/td[1]//text()')[0].strip()
+                item['auction'] = selector[0].xpath('//tr[5]/td[2]//text()')[0].strip()
+
+            elif selector[0].xpath('//tr[4]/th[1]//text()')[0].strip() == '成交价':
+                target = selector[0].xpath('//tr[4]/td[1]/ul/li[1]/text()')[0].strip()
+                if target in ['未提供', '流标', '流拍']:
+                    item['real_priceRMB'] = target
+                    item['real_priceHKD'] = target
+                    item['real_priceUSD'] = target
+                    item['real_priceEUR'] = target
 
                     item['special_performance'] = selector[0].xpath('//tr[5]/td[1]/a//text()')[0].strip()
                     item['auction_time'] = selector[0].xpath('//tr[5]/td[2]//text()')[0].strip()
                     item['auction_company'] = selector[0].xpath('//tr[6]/td[1]//text()')[0].strip()
                     item['auction'] = selector[0].xpath('//tr[6]/td[2]//text()')[0].strip()
                 else:
-                    # 存在bug，解不了
                     item['real_priceRMB'] = selector[0].xpath('//tr[4]/td/ul/li[1]/text()')[0].strip()
                     item['real_priceHKD'] = selector[0].xpath('//tr[4]/td/ul/li[2]/text()')[0].strip()
                     item['real_priceUSD'] = selector[0].xpath('//tr[4]/td/ul/li[3]/text()')[0].strip()
                     item['real_priceEUR'] = selector[0].xpath('//tr[4]/td/ul/li[4]/text()')[0].strip()
-                    # item['real_priceRMB'] = re.findall(r'RMB\s*[0-9,\,]*', context)
-                    # item['real_priceHKD'] = re.findall(r'HKD\s*[0-9,\,]*', context)
-                    # item['real_priceUSD'] = re.findall(r'USD\s*[0-9,\,]*', context)
-                    # item['real_priceEUR'] = re.findall(r'EUR\s*[0-9,\,]*', context)
 
                     item['special_performance'] = selector[0].xpath('//tr[5]/td[1]/a//text()')[0].strip()
                     item['auction_time'] = selector[0].xpath('//tr[5]/td[2]//text()')[0].strip()
                     item['auction_company'] = selector[0].xpath('//tr[6]/td[1]//text()')[0].strip()
                     item['auction'] = selector[0].xpath('//tr[6]/td[2]//text()')[0].strip()
-
-            if selector[0].xpath('//tr[4]/th[1]//text()')[0].strip() == '专场':
-                item['special_performance'] = selector[0].xpath('//tr[4]/td[1]/a//text()')[0].strip()
-                item['auction_time'] = selector[0].xpath('//tr[4]/td[2]//text()')[0].strip()
-                item['auction_company'] = selector[0].xpath('//tr[5]/td[1]//text()')[0].strip()
-                item['auction'] = selector[0].xpath('//tr[5]/td[2]//text()')[0].strip()
 
             items.append(item)
             time.sleep(0.5)
