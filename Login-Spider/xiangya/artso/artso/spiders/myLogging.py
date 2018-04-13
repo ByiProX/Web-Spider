@@ -32,7 +32,7 @@ class MyLogging(object):
         # logfile = './' + sys.argv[0][0:-3] + '.log'
         logfile = 'Scrapy.log'
 
-        fh = logging.FileHandler(logfile, 'w+')
+        fh = logging.FileHandler(logfile, 'a+')
         fh.setLevel(logging.WARNING)  # 只有错误才被记录到file中
 
         # 第三步 再创建一个handler，用于输出到控制台console
