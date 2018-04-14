@@ -17,11 +17,12 @@ class ArtsospiderSpider(scrapy.Spider):
     allowed_domains = ['artso.artron.net']
     # 此处可以优化，以后再说
     start_urls = []
-    for i in range(1, 11):
+    for i in range(1, 3):
         url = 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&Status=0&ClassCode=&ArtistName=&OrganCode=&StartDate=&EndDate=&listtype=0&order=&EvaluationType=0&Estartvalue=&Eendvalue=&Sstartvalue=&Sendvalue=&page=' + \
                str(i) + '/'
         start_urls.append(url)
 
+    LOG.warning('当前正在爬取的网页页码为第%d页' %i)
 
     def parse(self, response):
         innerPageNum = 0
@@ -94,7 +95,8 @@ class ArtsospiderSpider(scrapy.Spider):
                     item['auction'] = selector[0].xpath('//tr[6]/td[2]//text()')[0].strip()
 
             items.append(item)
-            time.sleep(0.2)
-            LOG.warning(response)
-        time.sleep(1)
+            time.sleep(1)
+            # LOG.warning(str(res) + '12345')
+            LOG.warning(str(innerPageNum) + ' ' + str(req.full_url) + '   ' + str(res))
+        time.sleep(0.2)
         return items

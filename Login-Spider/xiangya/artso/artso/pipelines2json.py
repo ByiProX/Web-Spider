@@ -8,9 +8,9 @@ import time
 import json
 import codecs
 
-class WeatherPipeline(object):
+class ArtsoPipeline(object):
     def process_item(self, item, spider):
-        fileName = xiangyaAuction + '.json'
+        fileName = 'xiangyaAuction' + '.json'
         with codecs.open(fileName, 'a', encoding='utf-8') as fp:
             line = json.dumps(dict(item), ensure_ascii=False) + '\n'
             fp.write(line)

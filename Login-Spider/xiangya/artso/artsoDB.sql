@@ -1,9 +1,9 @@
 -- 创建数据库
-CREATE DATABASE artsoDB CHARACTER SET 'utf8' COLLATE 'utf8_general_Ci';
+CREATE DATABASE artsoDB_V2 CHARACTER SET 'utf8' COLLATE 'utf8_general_Ci';
 USE artsoDB;
 
 -- 创建表
-CREATE TABLE xiangyaAuction(
+CREATE TABLE xiangyaAuctionV2(
     id INT AUTO_INCREMENT,
     name char(128),
     writer char(64),

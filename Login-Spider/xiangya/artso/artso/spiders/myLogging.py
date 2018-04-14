@@ -30,7 +30,7 @@ class MyLogging(object):
 
         # 第二步 创建一个handler，用于写入日志文件
         # logfile = './' + sys.argv[0][0:-3] + '.log'
-        logfile = 'Scrapy.log'
+        logfile = 'Scrapy2json.log'
 
         fh = logging.FileHandler(logfile, 'a+')
         fh.setLevel(logging.WARNING)  # 只有错误才被记录到file中
