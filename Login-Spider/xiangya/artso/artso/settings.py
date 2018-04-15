@@ -9,6 +9,8 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 from random import randrange
+from random import choice
+from .CookieResources import Cookies
 
 BOT_NAME = 'artso'
 
@@ -28,7 +30,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -43,7 +45,10 @@ DOWNLOAD_DELAY = 1
 DEFAULT_REQUEST_HEADERS = {
   # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   # 'Accept-Language': 'en',
-  'Cookies':'gsScrollPos-1276=0; tulu_pop=1; Hm_lvt_851619594aa1d1fb8c108cde832cc127=1523465820; artron_67ae_saltkey=G4smTtVQ; artron_67ae_lastvisit=1523462228; artron_loginuser=%E7%8E%8B%E5%9D%A4%E7%A5%A5; _at_pt_0_=2446806; _at_pt_1_=%E7%8E%8B%E5%9D%A4%E7%A5%A5; _at_pt_2_=314a3bb686fc0a54947b5b28ca495680; artron_67ae_sid=ylg5RB; artron_67ae_lastact=1523468001%09uc.php%09; artron_67ae_auth=989eh1%2BzHnhY3UpkSJMF5LxuIjnUSOBuhq6zJrqG5h3zRkpHZ7SwHlRqzsyJgjX4sSySmAg2bqHFq4cx6guUEVGXeIIH; artron_auth=8781oe5hdToWYvQy%2FRe0WDjAV8CaLbGNxY6pFOeNeJPMDB9PG610fKUrVKr4O1W217geSLqdUOGENIK%2F6lRkzXW2zxXj; growingio_2446806=var+_giuser+%3D+%7B%0A%09%09uid%3A+%222446806%22%2C+gender%3A+%22%E6%9C%AA%E7%9F%A5%22%2C+source%3A+%221%22%2C+date%3A+%222018-04-09%22%0A%09%7D%3B; gr_user_id=6f425c58-a8f5-4ef7-ab6d-b9243a0dcc53; Hm_lpvt_851619594aa1d1fb8c108cde832cc127=1523499477',
+  # 'Cookies':'gsScrollPos-1276=0; tulu_pop=1; Hm_lvt_851619594aa1d1fb8c108cde832cc127=1523465820; artron_67ae_saltkey=G4smTtVQ; artron_67ae_lastvisit=1523462228; artron_loginuser=%E7%8E%8B%E5%9D%A4%E7%A5%A5; _at_pt_0_=2446806; _at_pt_1_=%E7%8E%8B%E5%9D%A4%E7%A5%A5; _at_pt_2_=314a3bb686fc0a54947b5b28ca495680; artron_67ae_sid=ylg5RB; artron_67ae_lastact=1523468001%09uc.php%09; artron_67ae_auth=989eh1%2BzHnhY3UpkSJMF5LxuIjnUSOBuhq6zJrqG5h3zRkpHZ7SwHlRqzsyJgjX4sSySmAg2bqHFq4cx6guUEVGXeIIH; artron_auth=8781oe5hdToWYvQy%2FRe0WDjAV8CaLbGNxY6pFOeNeJPMDB9PG610fKUrVKr4O1W217geSLqdUOGENIK%2F6lRkzXW2zxXj; growingio_2446806=var+_giuser+%3D+%7B%0A%09%09uid%3A+%222446806%22%2C+gender%3A+%22%E6%9C%AA%E7%9F%A5%22%2C+source%3A+%221%22%2C+date%3A+%222018-04-09%22%0A%09%7D%3B; gr_user_id=6f425c58-a8f5-4ef7-ab6d-b9243a0dcc53; Hm_lpvt_851619594aa1d1fb8c108cde832cc127=1523499477',
+  #
+  # 'Cookies':tulu_pop=1; artron_67ae_saltkey=G4smTtVQ; artron_67ae_lastvisit=1523462228; artron_loginuser=%E7%8E%8B%E5%9D%A4%E7%A5%A5; growingio_2446806=var+_giuser+%3D+%7B%0A%09%09uid%3A+%222446806%22%2C+gender%3A+%22%E6%9C%AA%E7%9F%A5%22%2C+source%3A+%221%22%2C+date%3A+%222018-04-09%22%0A%09%7D%3B; gr_user_id=6f425c58-a8f5-4ef7-ab6d-b9243a0dcc53; gsScrollPos-1738=; artron_67ae_sid=Ixfry9; artron_67ae_lastact=1523762958%09uc.php%09; Hm_lvt_851619594aa1d1fb8c108cde832cc127=1523465820,1523763034,1523763083; _at_pt_0_=2450180; _at_pt_1_=%E6%89%8E%E6%96%AF%E7%BE%8E; _at_pt_2_=432a3afae9300af0f361d9b94ece2c06; Hm_lpvt_851619594aa1d1fb8c108cde832cc127=1523763168
+  'Cookies': choice(Cookies),
   'Referer': 'http://artso.artron.net/auction/search_auction.php?keyword=%E8%B1%A1%E7%89%99&page=' + str(randrange(100)),
   # 'Referer': 'www.baidu.com'
 }

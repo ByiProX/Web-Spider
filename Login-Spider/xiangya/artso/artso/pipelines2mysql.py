@@ -1,4 +1,5 @@
 import MySQLdb
+import time
 
 
 class ArtsoPipeline(object):
