@@ -3,7 +3,7 @@ CREATE DATABASE artsoDB_V2 CHARACTER SET 'utf8' COLLATE 'utf8_general_Ci';
 USE artsoDB;
 
 -- 创建表
-CREATE TABLE xiangyaAuctionV2(
+CREATE TABLE xiangyaAuctionV2Page2(
     id INT AUTO_INCREMENT,
     name char(255),
     writer char(255),

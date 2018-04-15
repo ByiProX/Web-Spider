@@ -30,7 +30,7 @@ class ArtsoPipeline(object):
         		db='artsoDB',
         		charset = 'utf8')
         cur = conn.cursor()
-        cur.execute("INSERT INTO xiangyaAuctionV2(name,writer,size,type,era,expected_price,real_priceRMB,real_priceHKD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (name,writer,size,type,era,expected_price,real_priceRMB,real_priceHKD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url))
+        cur.execute("INSERT INTO xiangyaAuctionV2Page2(name,writer,size,type,era,expected_price,real_priceRMB,real_priceHKD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (name,writer,size,type,era,expected_price,real_priceRMB,real_priceHKD,real_priceUSD,real_priceEUR,special_performance,auction_time,auction_company,auction,url))
         cur.close()
         conn.commit()
         conn.close()
