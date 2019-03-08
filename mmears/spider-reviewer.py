@@ -1,5 +1,3 @@
-import time
-
 import requests
 from pprint import pprint
 from openpyxl import Workbook
@@ -38,7 +36,7 @@ status = {
 }
 
 props = {
-    'a': 'status',
+    'a': 'courseId',
     'b': 'name',
     'c': 'email',
     'd': 'skype',
@@ -56,13 +54,13 @@ for k, v in props.items():
 
 pi = 10000
 pn = 1
-baseUrl = 'https://s.mmears.com/api/teacher/apply/list?_pi={0}&_pn={1}'
+baseUrl = 'https://s.mmears.com/course/catalog/teacher/list_course?startDate=1548950400000&endDate=1550851199000&courseType=5&_pi={0}&_pn={1}'
 url = baseUrl.format(pi, pn)
 
 headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.96 Safari/537.36',
     'referer': 'https://s.mmears.com/teacher/apply/list',
-    'cookie': 'userId=3081; token=7oLvwdL4WtT8L_ffulRdCcNO378fJEuA39lHaUFqDFn_U9vau0UJqrJowkvIkKrjcIG32K6v66FTKhAVBHXrfyaeywmCMT4M2tODqDV2QAn46NxMIvhcp3l0__fa73CJ; ph=c1b31292; pm-Product=qxLWrJCIZJYBNz5Sy4B-A8KOJvQtOZZcLiRPkhLpjAkqJ8_mcmiC24mBLH2VgkO9hnExvBfUodF7DWyavQ1TEQH_Mtrm4-5TEypXR-xZc4NmvP3sP06rP8vf5hHCxZanUxApCRNJfOiSGLlpL9vSScMEyAcwPQpogB-b2A_vC21_eQh65MVe6zyIyx2k1EKW'
+    'cookie': 'userId=3081; token=7oLvwdL4WtT8L_ffulRdCSsQLasOsVLbyjHfcUtOAfKf07HJA_U8iMfoEA8itBDONiZ3DNsGWMQnW2F00j3CxUvu656ScuFv-SrjwjWfKv346NxMIvhcp3l0__fa73CJ; pm-Product=qxLWrJCIZJYBNz5Sy4B-A1in2t7WVO6YkXC5qwuMmD4sF0tPr6pCVPiBgAnbXZF_2MkHdDY13fFmYndxUlJoRh8F2N52eLFC70HjBGm-hD9mvP3sP06rP8vf5hHCxZanUxApCRNJfOiSGLlpL9vSScMEyAcwPQpogB-b2A_vC21_eQh65MVe6zyIyx2k1EKW; ph=15242112'
 }
 
 while True:
@@ -89,6 +87,5 @@ while True:
     pn += 1
     url = baseUrl.format(pi, pn)
 
-formatTime = time.strftime("%Y%m%d", time.localtime(time.time()))
-path = './waqiangjiao-{}.xlsx'.format(formatTime)
+path = './waqiangjiao.xlsx'
 wb.save(path)
