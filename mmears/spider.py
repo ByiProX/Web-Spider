@@ -35,6 +35,9 @@ status = {
     24: '培训1v1邀请2',
     25: '培训1v1邀请3',
     26: '过课件',
+    27: '面试待定',
+    28: '面试取消',
+    29: '课程NO_SHOW'
 }
 
 props = {
@@ -62,7 +65,7 @@ url = baseUrl.format(pi, pn)
 headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.96 Safari/537.36',
     'referer': 'https://s.mmears.com/teacher/apply/list',
-    'cookie': 'userId=3081; token=7oLvwdL4WtT8L_ffulRdCcNO378fJEuA39lHaUFqDFn_U9vau0UJqrJowkvIkKrjcIG32K6v66FTKhAVBHXrfyaeywmCMT4M2tODqDV2QAn46NxMIvhcp3l0__fa73CJ; ph=c1b31292; pm-Product=qxLWrJCIZJYBNz5Sy4B-A8KOJvQtOZZcLiRPkhLpjAkqJ8_mcmiC24mBLH2VgkO9hnExvBfUodF7DWyavQ1TEQH_Mtrm4-5TEypXR-xZc4NmvP3sP06rP8vf5hHCxZanUxApCRNJfOiSGLlpL9vSScMEyAcwPQpogB-b2A_vC21_eQh65MVe6zyIyx2k1EKW'
+    'cookie': 'userId=3081; token=7oLvwdL4WtT8L_ffulRdCcNO378fJEuA39lHaUFqDFl1ZTvRap3bBrKxD5atABaHZHn-paHR9lzTt-1r8lJQFGVm6anUvBwQ2Zmcd1k0QNn46NxMIvhcp3l0__fa73CJ; pm-Product=qxLWrJCIZJYBNz5Sy4B-A8KOJvQtOZZcLiRPkhLpjAmlt-4agda18WwrQcDTOPfyx1MBTorKZabX2fGNsZ5xwKtAQpuD7NRMK7Kx-ZIcDvtmvP3sP06rP8vf5hHCxZanUxApCRNJfOiSGLlpL9vSScMEyAcwPQpogB-b2A_vC21_eQh65MVe6zyIyx2k1EKW; ph=2de42f93'
 }
 
 while True:
@@ -71,6 +74,7 @@ while True:
         break
 
     datas = res.json()['result']['data']
+    # pprint(datas)
 
     for i, data in enumerate(datas):
         ws['a' + str((pn - 1) * pi + (i + 2))] = status[data['status']]
