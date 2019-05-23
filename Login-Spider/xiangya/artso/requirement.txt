@@ -27,7 +27,7 @@ enum34==1.1.6
 et-xmlfile==1.0.1
 facebook-wda==0.2.2.dev1
 fake-useragent==0.1.7
-Flask==0.12.2
+Flask==0.12.3
 future==0.16.0
 gast==0.2.0
 gevent==1.2.2
