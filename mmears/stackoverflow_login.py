@@ -1,4 +1,10 @@
+import yagmail
 import requests
+import time
+
+start = time.time()
+
+formatTime = time.strftime("%Y%m%d-%H%M%S", time.localtime(time.time()))
 
 url = 'https://stackoverflow.com/users/7544402/byiprox'
 headers = {
@@ -8,4 +14,11 @@ headers = {
 }
 
 res = requests.get(url=url, headers=headers)
-print(res)
+print(formatTime + '--' + str(res))
+
+# 登录你的邮箱
+# 发送邮件
+if res.status_code != 200:
+    yag = yagmail.SMTP('wangkx0105@aliyun.com', 'Wkx299792458al', host='smtp.aliyun.com')
+    yag.send(to=['wangkx0105@qq.com', 'wangkx0105@aliyun.com'], subject='StackOverFlow Login Failed',
+             contents=['登录失败，请修改cookie'])
