@@ -88,7 +88,7 @@ PyDispatcher==2.0.5
 pygal==2.4.0
 pygal-maps-world==1.0.2
 pygame==1.9.3
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.5.2
 pylint==1.8.2
 PyMsgBox==1.0.6
