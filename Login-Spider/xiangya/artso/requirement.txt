@@ -163,7 +163,7 @@ pyobjc-framework-SystemConfiguration==3.2.1
 pyobjc-framework-WebKit==3.2.1
 pyOpenSSL==17.5.0
 pyparsing==2.2.0
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyperclip==1.5.27
 pypng==0.0.18
 PyQRCode==1.2.1
